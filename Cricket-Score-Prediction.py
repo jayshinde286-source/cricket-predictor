@@ -125,6 +125,9 @@ def main():
                 pred = model.predict(temp_transformed)[0]
                 upcoming.append(pred)
 
+            # Reverse the list to fix the swapped overs issue
+            upcoming.reverse()
+
             fig, ax = plt.subplots()
             ax.bar([f"Over {round(current_over+i,1)}" for i in range(1,len(upcoming)+1)], upcoming, color='#14299c')
             ax.set_ylabel('Predicted Total Score')
